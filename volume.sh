@@ -1,10 +1,11 @@
 #/bin/sh
-if [ $1 == 'up' ]; then
-    amixer -D pulse sset Master 5%+
-elif [ $1 == 'down' ]; then
-    amixer -D pulse sset Master 5%-
-elif [[ $1 =~ ^[0-9]+$ ]]; then
-    amixer -D pulse sset Master $1%
+date=`date "+%Y-%m-%d %H:%M:%S"`
+if [ "$1" = "up" ]; then
+    /usr/bin/amixer -D pulse sset Master 5%+
+elif [ "$1" = "down" ]; then
+    /usr/bin/amixer -D pulse sset Master 5%-
+elif [[ "$1" =~ ^[0-9]+$ ]]; then
+    /usr/bin/amixer -D pulse sset Master $1%
 else
-    echo "Unknown parameters"
+    echo "Volume Error: [$1 $date]" >> $HOME/scripts/log
 fi
