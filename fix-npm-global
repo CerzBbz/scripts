@@ -1,0 +1,8 @@
+#!/bin/bash
+
+GLOBAL_DIR=$HOME/bin/npm-global
+
+mkdir -p "${GLOBAL_DIR}"
+npm config set prefix "${GLOBAL_DIR}"
+echo "PATH=\"${GLOBAL_DIR}/bin:\$PATH\"" >> ~/.profile
+source ~/.profile
