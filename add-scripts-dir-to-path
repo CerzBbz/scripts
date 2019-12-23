@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "PATH=\"`dirname "$0"`:\$PATH\"" >> $HOME/.profile
