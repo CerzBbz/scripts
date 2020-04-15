@@ -1,3 +1,10 @@
 #!/bin/bash
 
-echo "PATH=\"`dirname "$0"`:\$PATH\"" >> $HOME/.profile
+path=$(realpath $(dirname $BASH_SOURCE))
+
+tee -a $HOME/.profile << PATH_BLOCK
+if [ -d "$path" ]; then
+    PATH="$path:\$PATH";
+fi
+
+PATH_BLOCK
