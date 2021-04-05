@@ -1,0 +1,21 @@
+card=2
+
+toggle ()
+{
+  message=`amixer -c ${card} set Mic toggle \
+      | grep '\[on\]' > /dev/null \
+          && echo 'mic unmuted' \
+          || echo 'mic muted'`;
+
+
+  notify-send "${message}";
+  espeak "${message}";
+  location=`dirname "$0"`
+}
+
+isMuted ()
+{
+  amixer -c ${card} get Mic | grep '\[off\]' > /dev/null
+}
+
+$1
