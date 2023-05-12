@@ -1,0 +1,30 @@
+#!/bin/bash
+
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+BLUE="\033[0;34m"
+MAGENTA="\033[0;35m"
+CYAN="\033[0;36m"
+RESET="\033[0m"
+
+BuildPrompt()
+{
+  local exitStatus=$?
+  local exitText=""
+  if [[ $exitStatus == 0 ]]; then
+    exitText="$GREEN ";
+  else 
+    exitText="$RED $exitStatus ";
+  fi
+  export PS1="\
+$exitText\
+$MAGENTA\$(__git_ps1 \"%s\")\
+$GREEN\u@\h\
+$RESET:\
+$CYAN\w\
+$RESET
+$ "
+}
+
+PROMPT_COMMAND=BuildPrompt
