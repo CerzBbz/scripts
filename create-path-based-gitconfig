@@ -1,0 +1,28 @@
+#!/bin/bash
+set -ex
+
+if [ "$#" -lt "3" ]; then
+	echo "usage: ./create-gitconfig name email path"
+	exit 1;
+fi
+
+name=$1
+email=$2
+path=$3
+
+mkdir -p $path
+
+tee -a $HOME/.gitconfig << INCLUDE_BLOCK
+[includeIf "gitdir:$path"]
+	path = $path/.gitconfig
+
+INCLUDE_BLOCK
+
+tee $path/.gitconfig << CONFIG_BLOCK
+[user]
+	name = $name
+	email = $email
+CONFIG_BLOCK
+
+cat $HOME/.gitconfig
+cat $path/.gitconfig
