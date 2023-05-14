@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+	echo "supply keyname"
+	exit 1
+else
+	projectdir=$HOME/projects/$1
+	mkdir -p $projectdir
+	tee -a $HOME/.ssh/config << MATCH
+
+Match exec "[[ \$(pwd) == $projectdir* ]]"
+  IdentityFile ~/.ssh/$1
+
+MATCH
+fi
