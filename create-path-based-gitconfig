@@ -13,7 +13,7 @@ path=$3
 mkdir -p $path
 
 tee -a $HOME/.gitconfig << INCLUDE_BLOCK
-[includeIf "gitdir:$path"]
+[includeIf "gitdir:$path/"]
 	path = $path/.gitconfig
 
 INCLUDE_BLOCK
