@@ -1,1 +1,2 @@
-google-chrome --profile-directory=Default --app=https://$1
+[ ! -z $2 ] && profile=$2 || profile="Profile 1"
+google-chrome --app=$1 --profile-directory="$profile"
