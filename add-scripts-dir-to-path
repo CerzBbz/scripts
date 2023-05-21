@@ -4,7 +4,7 @@ path=$(realpath $(dirname $BASH_SOURCE))
 
 tee -a $HOME/.profile << PATH_BLOCK
 if [ -d "$path" ]; then
-    PATH="$path:\$PATH";
+    PATH="$path:$path/chrome-apps:\$PATH";
 fi
 
 PATH_BLOCK
