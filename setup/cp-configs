@@ -1,0 +1,3 @@
+#!/bin/bash
+path=$(dirname $BASH_SOURCE)
+cp -RT $path/config ~/.config
