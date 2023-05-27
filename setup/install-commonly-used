@@ -1,0 +1,34 @@
+#!/bin/bash
+
+set -ex
+
+sudo apt update
+
+sudo apt install \
+	jq \
+	git \
+	vim \
+	i3 \
+	i3blocks \
+	feh \
+	flameshot \
+	scrot \
+	steam \
+	fonts-font-awesome \
+	pavucontrol \
+	espeak \
+	unrar \
+	arandr \
+	obs-studio \
+	xdotool \
+	xclip
+	
+
+sudo snap install \
+	code \
+	spotify \
+	vlc
+
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
+ 
