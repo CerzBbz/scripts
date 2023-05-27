@@ -2,7 +2,7 @@
 
 path=$(realpath $(dirname $BASH_SOURCE))
 
-cp -r $path/.bashrc.d $HOME/.bashrc.d
+cp -r $path/bashrc.d $HOME/.bashrc.d
 echo created $HOME/.bashrc.d
 
 tee -a $HOME/.bashrc << BASH
