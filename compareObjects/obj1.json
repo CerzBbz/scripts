@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "John Doe",
+  "address": {
+    "city": "New York",
+    "zipcode": "10001",
+    "street": {
+      "name": "Broadway",
+      "number": 123
+    }
+  },
+  "hobbies": ["reading", "traveling"],
+  "contacts": {
+    "email": "john.doe@example.com",
+    "phone": "+1-123-456-7890"
+  }
+}
+
