@@ -133,27 +133,30 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+set $secondary HDMI-A-0 
+set $primary DisplayPort-0 
+
 bar {
 	#font pango:DejaVu Sans Mono, Awesome 8
 	font pango:FontAwesome 10
 	status_command /usr/bin/i3blocks 
-	tray_output primary
+	tray_output $primary
 	position top
+#    mode hide
+#    hidden_state hide
+#    modifier Mod1
 }
 
 ##############################
 ## lock workspaces to monitors
-set $left HDMI-A-0 
-#set $mid HDMI-1
-set $right DisplayPort-1 
 
-workspace $ws1 output $left
-workspace $ws2 output $left
-workspace $ws3 output $right
+workspace $ws1 output $primary
+workspace $ws2 output $primary
+workspace $ws3 output $secondary
 #workspace $ws4 output $mid
-#workspace $ws5 output $mid
-workspace $ws9 output $right
-workspace $ws10 output $right
+workspace $ws8 output $primary
+workspace $ws9 output $secondary
+workspace $ws10 output $secondary
 ##############################
 
 for_window [class="^.*"] border pixel 1
@@ -174,6 +177,7 @@ assign [title="Steam"] $ws8
 
 # autolaunch 
 exec steam
+#exec --no-startup-id ibus-daemon --xim -d -r
 
 ##### Keybinds
 
@@ -184,17 +188,30 @@ bindsym --release Control+Print exec "scrot -s /home/$USER/Pictures/Screenshots/
 bindsym --release $alt+Sys_Req exec "scrot -u /home/$USER/Pictures/Screenshots/%Y-%m-%d_%T.png"
 
 # Programs
-bindsym $mod+i exec "/opt/google/chrome/chrome --profile-directory='Profile 1'"
-bindsym $mod+Shift+i exec "/opt/google/chrome/chrome --profile-directory='Profile 2'"
-bindsym $mod+Control+Shift+i exec "/opt/google/chrome/chrome --profile-directory='Profile 3'"
+#bindsym $mod+i exec "/opt/google/chrome/chrome --profile-directory='Profile 1'"
+#bindsym $mod+Shift+i exec "/opt/google/chrome/chrome --profile-directory='Profile 2'"
+#bindsym $mod+Control+Shift+i exec "/opt/google/chrome/chrome --profile-directory='Profile 3'"
+
+bindsym $mod+i exec "/usr/bin/firefox -p Robin"
+bindsym $mod+Shift+i exec "/usr/bin/firefox -p Plateup"
+bindsym $mod+Control+Shift+i exec "/usr/bin/firefox -p Chinese"
+
 bindsym $mod+Shift+v exec "/usr/bin/pavucontrol"
 
 # Functions
 bindsym $alt+Tab workspace back_and_forth
 bindsym $mod+Shift+m exec "/home/$USER/scripts/microphone toggle"
+bindsym $mod+l exec "sleep 1; xset dpms force off"
 
 # Brightness
 bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+# Volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 3 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 3 toggle
+
+exec_always $HOME/.screenlayout/default.sh
 
 #############
