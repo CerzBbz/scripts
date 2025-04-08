@@ -192,9 +192,12 @@ bindsym --release $alt+Sys_Req exec "scrot -u /home/$USER/Pictures/Screenshots/%
 #bindsym $mod+Shift+i exec "/opt/google/chrome/chrome --profile-directory='Profile 2'"
 #bindsym $mod+Control+Shift+i exec "/opt/google/chrome/chrome --profile-directory='Profile 3'"
 
-bindsym $mod+i exec "/usr/bin/firefox -p Robin"
-bindsym $mod+Shift+i exec "/usr/bin/firefox -p Plateup"
-bindsym $mod+Control+Shift+i exec "/usr/bin/firefox -p Chinese"
+#bindsym $mod+i exec "/usr/bin/firefox -p Robin"
+#bindsym $mod+Shift+i exec "/usr/bin/firefox -p Plateup"
+#bindsym $mod+Control+Shift+i exec "/usr/bin/firefox -p Chinese"
+
+bindsym $mod+i exec "/usr/bin/vivaldi --profile-directory='Default'"
+bindsym $mod+Shift+i exec "/usr/bin/vivaldi --profile-directory='Profile 1'"
 
 bindsym $mod+Shift+v exec "/usr/bin/pavucontrol"
 
