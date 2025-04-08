@@ -1,2 +1,2 @@
-[ ! -z $2 ] && profile=$2 || profile="Profile 1"
-google-chrome --app=$1 --profile-directory="$profile"
+[ ! -z $2 ] && profile=$2 || profile="Default"
+vivaldi --app=$1 --profile-directory="$profile"
