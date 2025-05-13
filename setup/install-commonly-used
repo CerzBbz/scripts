@@ -1,10 +1,10 @@
 #!/bin/bash
 
-set -ex
+set -x
 
 sudo apt update
 
-sudo apt install \
+sudo apt install -y \
 	jq \
 	git \
 	vim \
@@ -13,7 +13,6 @@ sudo apt install \
 	feh \
 	flameshot \
 	scrot \
-	steam \
 	fonts-font-awesome \
 	pavucontrol \
 	espeak \
@@ -21,14 +20,11 @@ sudo apt install \
 	arandr \
 	obs-studio \
 	xdotool \
-	xclip
+	xclip \
+	curl \
+	chromium-browser
 	
 
-sudo snap install \
-	code \
-	spotify \
-	vlc
-
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
- 
+sudo snap install code --classic
+sudo snap install	spotify
+sudo snap install vlc

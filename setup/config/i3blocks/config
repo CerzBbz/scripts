@@ -52,7 +52,7 @@ separator=false
 interval=30
 min_width=100.0°C
 separator=false
-command=echo $(( `cat /sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input` / 1000 ))°C
+command=echo $(( `cat /sys/class/hwmon/hwmon1/temp1_input` / 1000 ))°C
 
 [memory]
 label=MEM
