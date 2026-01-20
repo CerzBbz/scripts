@@ -29,7 +29,7 @@ separator_block_width=15
 markup=none
 
 [song]
-command=/home/$USER/scripts/currently-playing.sh
+command=/home/$USER/scripts/currently-playing.py
 interval=60
 
 

@@ -22,11 +22,11 @@ sudo apt install -y \
 	xdotool \
 	xclip \
 	curl \
-	chromium-browser
+	chromium-browser \
+	playerctl
 
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 	
 sudo snap install code --classic
-sudo snap install	spotify
 sudo snap install vlc
