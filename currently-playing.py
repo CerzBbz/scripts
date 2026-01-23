@@ -8,17 +8,20 @@ then gets the metadata for the active song using `playerctl -p ${player} metadat
 import subprocess
 import sys
 
-def get_current_song():
+def get_current_song(player=None):
     try:
-        list_result = subprocess.run(
-            ['playerctl', '-l'],
-            capture_output=True, text=True, timeout=5
-        )
-        if list_result.returncode != 0 or not list_result.stdout.strip():
-            # No players found
-            return ""
+        if player:
+            players = [player]
+        else:
+            list_result = subprocess.run(
+                ['playerctl', '-l'],
+                capture_output=True, text=True, timeout=5
+            )
+            if list_result.returncode != 0 or not list_result.stdout.strip():
+                # No players found
+                return ""
 
-        players = list_result.stdout.strip().split('\n')
+            players = list_result.stdout.strip().split('\n')
         outputs = []
 
         # Get playing status of all players
@@ -37,4 +40,5 @@ def get_current_song():
         return f"Error: {str(e)}"
 
 if __name__ == "__main__":
-    print(get_current_song())
+    player = sys.argv[1] if len(sys.argv) > 1 else None
+    print(get_current_song(player))
