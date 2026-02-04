@@ -16,8 +16,8 @@ while read -r line; do
 done < <(bluetoothctl -t 10 scan on 2>&1)
 
 if [ $FOUND -eq 1 ]; then
-  bluetoothctl pair $MAC
   bluetoothctl trust $MAC
+  bluetoothctl pair $MAC
   bluetoothctl connect $MAC
   echo "connected"
 else
