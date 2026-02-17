@@ -231,7 +231,7 @@ bar {
 include /etc/sway/config.d/*
 
 
-##
+############################################################
 # Custom start
 
 input type:keyboard xkb_layout gb
@@ -245,7 +245,6 @@ set $secondary DP-2
 
 ##############################
 ## lock workspaces to monitors
-
 workspace $ws1 output $primary
 workspace $ws2 output $primary
 workspace $ws3 output $secondary
@@ -253,13 +252,34 @@ workspace $ws3 output $secondary
 workspace $ws8 output $primary
 workspace $ws9 output $secondary
 workspace $ws10 output $secondary
-workspace $wsw1 output $secondary
-workspace $wsw2 output $primary
+workspace $ws11 output $secondary
+workspace $ws12 output $primary
 ##############################
 
+##############################
+# assign apps to workspaces
+assign [class="Code"] $ws2
+assign [class="Slack"] $ws9
+assign [title=".*whatsapp.*"] $ws9
+assign [title=".*discord.*"] $ws9
+assign [class="Emulator"] $ws11
+assign [class="dota2"] $ws12
+assign [app_id="spotify"] $ws10
+##############################
+
+##############################
+# bindings
 bindsym $mod+i exec "/snap/bin/chromium --profile-directory='Default' --disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled"
 bindsym $mod+Shift+i exec "/snap/bin/chromium --profile-directory='Profile 1' --disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled"
 bindsym $mod+Shift+v exec "/usr/bin/pavucontrol"
 bindsym $mod+Shift+m exec "/home/$USER/scripts/microphone toggle"
 
+bindsym Alt+Tab exec swaymsg workspace back_and_forth
+
 bindsym --release Control+Shift+Print exec grim -g "$(slurp)" - | wl-copy
+##############################
+
+##############################
+# autostart
+exec blueman-applet
+##############################
