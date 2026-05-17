@@ -1,3 +1,11 @@
 #!/bin/bash
 path=$(dirname $BASH_SOURCE)
-cp -RT $path/config ~/.config
+
+for dir in "$path/config"/*/; do
+  name=$(basename "$dir")
+  if [[ "$1" != "-y" ]]; then
+    read -p "Copy $name to ~/.config/$name? [Y/n] " confirm
+    [[ "$confirm" =~ ^[Nn]$ ]] && continue
+  fi
+  cp -RT "$dir" ~/.config/"$name"
+done
