@@ -8,19 +8,13 @@ sudo apt install -y \
 	jq \
 	git \
 	vim \
-	i3 \
-	i3blocks \
 	feh \
-	flameshot \
-	scrot \
 	fonts-font-awesome \
 	pavucontrol \
 	espeak \
 	unrar \
 	arandr \
 	obs-studio \
-	xdotool \
-	xclip \
 	curl \
 	chromium-browser \
 	playerctl
