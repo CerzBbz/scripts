@@ -1,2 +1,2 @@
-[ ! -z $2 ] && profile=$2 || profile="Default"
-chromium --app=$1 --profile-directory="$profile"
+[ ! -z "$2" ] && profile="$2" || profile="Default"
+chromium --app=$1 --profile-directory="$profile" --disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled
